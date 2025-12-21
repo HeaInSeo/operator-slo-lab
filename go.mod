@@ -1,4 +1,4 @@
-module github.com/HaeInSeo/operator-slo-lab
+module github.com/HeaInSeo/operator-slo-lab
 
 go 1.24.6
 
