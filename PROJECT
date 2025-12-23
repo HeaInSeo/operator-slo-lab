@@ -7,5 +7,15 @@ domain: heainseo.dev
 layout:
 - go.kubebuilder.io/v4
 projectName: operator-slo-lab
-repo: github.com/HaeInSeo/operator-slo-lab
+repo: github.com/HeaInSeo/operator-slo-lab
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: heainseo.dev
+  group: lab
+  kind: SloJob
+  path: github.com/HeaInSeo/operator-slo-lab/api/v1alpha1
+  version: v1alpha1
 version: "3"

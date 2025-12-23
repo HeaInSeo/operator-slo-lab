@@ -28,7 +28,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/HaeInSeo/operator-slo-lab/test/utils"
+	"github.com/HeaInSeo/operator-slo-lab/test/utils"
 )
 
 var (
