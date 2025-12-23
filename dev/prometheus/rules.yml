@@ -1,0 +1,30 @@
+groups:
+- name: sli.rules
+  interval: 5s
+  rules:
+  - record: sli:e2e_convergence_seconds:p50
+    expr: |
+      histogram_quantile(
+        0.50,
+        sum by (le) (
+          rate(e2e_convergence_time_seconds_bucket{result="success"}[5m])
+        )
+      )
+
+  - record: sli:e2e_convergence_seconds:p95
+    expr: |
+      histogram_quantile(
+        0.95,
+        sum by (le) (
+          rate(e2e_convergence_time_seconds_bucket{result="success"}[5m])
+        )
+      )
+
+  - record: sli:e2e_convergence_seconds:p99
+    expr: |
+      histogram_quantile(
+        0.99,
+        sum by (le) (
+          rate(e2e_convergence_time_seconds_bucket{result="success"}[5m])
+        )
+      )

@@ -1,0 +1,8 @@
+apiVersion: lab.heainseo.dev/v1alpha1
+kind: SloJob
+metadata:
+  labels:
+    app.kubernetes.io/name: operator-slo-lab
+    app.kubernetes.io/managed-by: kustomize
+  name: slojob-sample
+spec: {}
