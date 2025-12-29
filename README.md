@@ -35,10 +35,6 @@ curl -sf "$METRICS" >/dev/null \
   || echo "[FAIL] cannot reach metrics endpoint: $METRICS"
 
 ```
-
-### TODO
-- kubectl 관련 shellscript 로 정리해놓자. ns 자꾸 잊어버리는데 이거 잊지말고 yaml 에 넣지 말고 kubectl 로 ns 에 넣어주는 방식으로 간다.  
-
 ### fork 할 때 주의사항
 - kubectl 관련해서 wrapping 한 스크립트를 쓰기 때문에 kubectl 설치해서 사용하는 개념이 아니다.
 - 아래와 같이 작성해서 사용하고 있고, /usr/local/bin 에 넣어두어서 전역적으로 사용할 수 있게 만들었다.
