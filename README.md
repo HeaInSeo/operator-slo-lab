@@ -3,8 +3,39 @@
 - High-Performance/Complex Lifecycle Operator를 위한 SLI/SLO 프레임워크
 
 ### 시작하기
-- hack 폴더에서 dev-start.sh 을 통해서 시작 및 정검을 할 수 있다. 
-- 정상적으로 시작됨다면 다른 터미널에서 make run 으로 시작할 수 있다. 물론 사전에 설정 및 설치관련은 완료 되어 있어야 한다. 이것은 노션을 참고하면 된다. (모르면 질문)
+
+```bash
+
+# 루트에서 터미널 A 에서
+./hack/dev-start.sh # kind 클러스터 확인 및 정검
+
+# 루트에서 새터미널에서          
+make install        # CRD 등록
+make run            # manager 실행 (로그 관찰 창으로 두기)
+
+# 터미널 A 에서 (namespace 잊지말자. 자꾸 잊어버림. 기억용으로 남김.)
+kubectl create namespace slo-lab
+kubectl get ns # 확인
+kubectl apply -n slo-lab -f config/samples/lab_v1alpha1_slojob.yaml
+kubectl get slojob -n slo-lab
+
+#kubectl annotate slojob slojob-sample \
+#  -n slo-lab \
+#  test/start-time="$(date --rfc3339=ns)" \
+#  --overwrite
+
+# curl -s "$METRICS" | grep e2e_convergence | head
+
+# dev-start.sh 에서 METRICS_DEFAULT="http://localhost:8080/metrics" 이렇게 설정하지만, 만약 다른 터미널에서 사용하게 되면 이렇게 설정하라고 남겨둠.
+METRICS=${METRICS:-http://localhost:8080/metrics}
+
+# metrics server 살아있고 열려있는지 확인.
+curl -sf "$METRICS" >/dev/null \
+  && echo "[OK] metrics endpoint alive: $METRICS" \
+  || echo "[FAIL] cannot reach metrics endpoint: $METRICS"
+
+```
+
 
 
 ### TODO
