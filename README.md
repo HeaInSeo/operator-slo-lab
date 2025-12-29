@@ -6,14 +6,14 @@
 
 ```bash
 
-# 루트에서 터미널 A 에서
+# 터미널 A 루트에서
 ./hack/dev-start.sh # kind 클러스터 확인 및 정검
 
-# 루트에서 새터미널에서          
+# 새터미널에서 루트에서         
 make install        # CRD 등록
 make run            # manager 실행 (로그 관찰 창으로 두기)
 
-# 터미널 A 에서 (namespace 잊지말자. 자꾸 잊어버림. 기억용으로 남김.)
+# 터미널 A 루트에서 (namespace 잊지말자. 자꾸 잊어버림. 기억용으로 남김.)
 kubectl create namespace slo-lab
 kubectl get ns # 확인
 kubectl apply -n slo-lab -f config/samples/lab_v1alpha1_slojob.yaml
@@ -35,8 +35,6 @@ curl -sf "$METRICS" >/dev/null \
   || echo "[FAIL] cannot reach metrics endpoint: $METRICS"
 
 ```
-
-
 
 ### TODO
 - kubectl 관련 shellscript 로 정리해놓자. ns 자꾸 잊어버리는데 이거 잊지말고 yaml 에 넣지 말고 kubectl 로 ns 에 넣어주는 방식으로 간다.  
