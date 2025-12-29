@@ -2,6 +2,11 @@
 ###
 - High-Performance/Complex Lifecycle Operator를 위한 SLI/SLO 프레임워크
 
+### 시작하기
+- hack 폴더에서 dev-start.sh 을 통해서 시작 및 정검을 할 수 있다. 
+- 정상적으로 시작됨다면 다른 터미널에서 make run 으로 시작할 수 있다. 물론 사전에 설정 및 설치관련은 완료 되어 있어야 한다. 이것은 노션을 참고하면 된다. (모르면 질문)
+
+
 ### TODO
 - kubectl 관련 shellscript 로 정리해놓자. ns 자꾸 잊어버리는데 이거 잊지말고 yaml 에 넣지 말고 kubectl 로 ns 에 넣어주는 방식으로 간다.  
 
