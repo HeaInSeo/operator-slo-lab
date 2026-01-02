@@ -45,9 +45,9 @@ ctx_clean="$(
 if [[ "${ctx_clean}" == "kind-slo-lab" ]]; then
   log "  ✓ current-context = kind-slo-lab"
 else
-  log "  ⚠️  current-context 출력 (정제 전):"
+  log "  ⚠️ current-context 출력 (정제 전):"
   echo "      ${ctx_raw}"
-  log "  ⚠️  current-context 출력 (정제 후):"
+  log "  ⚠️ current-context 출력 (정제 후):"
   echo "      ${ctx_clean}"
   log "    → 'kind-slo-lab' 로 전환 권장:"
   echo "      kubectl config use-context kind-slo-lab"
@@ -60,23 +60,24 @@ log "4) 테스트 실행 (./hack/test.sh)"
 "${ROOT}/hack/test.sh"
 
 log "5) METRICS 기본값 안내"
-METRICS_DEFAULT="http://localhost:8080/metrics"
-log "  기본 METRICS URL: ${METRICS_DEFAULT}"
+METRICS="http://localhost:8080/metrics"
+log "  기본 METRICS URL: ${METRICS}"
 echo
-echo "  ※ manager(make run)가 이미 떠 있다면, 이 터미널(또는 다른 터미널)에서 예를 들어:"
+#echo "  ※ manager(make run)가 이미 떠 있다면, 이 터미널(또는 다른 터미널)에서 예를 들어:"
 echo
-echo "    METRICS=\${METRICS:-${METRICS_DEFAULT}}"
-echo "    curl -s \"\$METRICS\" | grep e2e_convergence_time | head"
-echo "    curl -s \"\$METRICS\" | grep workqueue_ | head"
+echo "    METRICS=\${METRICS:-${METRICS}}"
+#echo "    curl -s \"\$METRICS\" | grep e2e_convergence_time | head"
+#echo "    curl -s \"\$METRICS\" | grep workqueue_ | head"
 echo
 log "=== dev-start 정검 완료. 이제 다음 순서로 진행하면 됩니다 ==="
-echo "  1) 새 터미널을 열어서, 리포지토리 루트에서:"
-echo "       make run"
-echo "     (이 터미널은 manager 로그만 띄워두고 두는 것을 추천합니다.)"
-echo
-echo "  2) dev-start.sh 를 실행한 현재 터미널에서 샘플 적용 및 metrics 확인:"
-echo "       kubectl apply -f config/samples"
-echo "       METRICS=\${METRICS:-${METRICS_DEFAULT}}"
-echo "       curl -s \"\$METRICS\" | grep e2e_convergence_time | head"
-echo "       curl -s \"\$METRICS\" | grep workqueue_ | head"
-echo
+echo "  Readme.md 의 '시작하기' 섹션 참고"
+#echo "  1) 새 터미널을 열어서, 리포지토리 루트에서:"
+#echo "       make run"
+#echo "     (이 터미널은 manager 로그만 띄워두고 두는 것을 추천합니다.)"
+#echo
+#echo "  2) dev-start.sh 를 실행한 현재 터미널에서 샘플 적용 및 metrics 확인:"
+#echo "       kubectl apply -f config/samples"
+#echo "       METRICS=\${METRICS:-${METRICS}}"
+#echo "       curl -s \"\$METRICS\" | grep e2e_convergence_time | head"
+#echo "       curl -s \"\$METRICS\" | grep workqueue_ | head"
+#echo

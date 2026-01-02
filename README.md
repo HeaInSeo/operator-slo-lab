@@ -28,6 +28,9 @@ kubectl get slojob -n slo-lab
 
 # dev-start.sh 에서 METRICS_DEFAULT="http://localhost:8080/metrics" 이렇게 설정하지만, 만약 다른 터미널에서 사용하게 되면 이렇게 설정하라고 남겨둠.
 METRICS=${METRICS:-http://localhost:8080/metrics}
+# 만약, dev-start.sh 에서 실행하고 다른 터미널에서 make run 을 실행했다면,
+METRICS=${METRICS:-${METRICS_DEFAULT}}
+# 해당 구문을 실행해야 한다.
 
 # metrics server 살아있고 열려있는지 확인.
 curl -sf "$METRICS" >/dev/null \
@@ -107,3 +110,9 @@ else
   echo "      kubectl config use-context kind-slo-lab"
 fi
 ```
+
+## TODO
+- clean  및 GC 부분 담아야함.  
+
+## 참고
+https://sugar-albatross-26b.notion.site/SloJob-E2E-Convergence-SLI-Phase-2-2dc86e6dd1d1802b9157f286913afeeb

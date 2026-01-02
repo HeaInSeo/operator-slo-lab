@@ -57,11 +57,16 @@ func (r *SloJobReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 	// 1) Fetch object
 	var slojob labv1alpha1.SloJob
 	if err := r.Get(ctx, req.NamespacedName, &slojob); err != nil {
-		if apierrors.IsNotFound(err) {
-			return ctrl.Result{}, nil
-		}
-		return ctrl.Result{}, err
+		return ctrl.Result{}, client.IgnoreNotFound(err)
 	}
+
+	// 위의 코드와 동일, 학습을 위해 남겨둠.
+	//if err := r.Get(ctx, req.NamespacedName, &slojob); err != nil {
+	//	if apierrors.IsNotFound(err) {
+	//		return ctrl.Result{}, nil
+	//	}
+	//	return ctrl.Result{}, err
+	//}
 
 	// 2) Read start-time annotation (Phase 2: more explicit logs)
 	if slojob.Annotations == nil {
@@ -69,9 +74,20 @@ func (r *SloJobReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 		return ctrl.Result{}, nil
 	}
 
-	startStr := slojob.Annotations["test/start-time"]
+	//startStr := slojob.Annotations["test/start-time"]
+	//if startStr == "" {
+	//	log.Info("missing annotation test/start-time; skip convergence metric")
+	//	return ctrl.Result{}, nil
+	//}
+
+	startStr, ok := slojob.Annotations["test/start-time"]
+	if !ok {
+		log.Info("annotation test/start-time not set; skip convergence metric")
+		return ctrl.Result{}, nil
+	}
+
 	if startStr == "" {
-		log.Info("missing annotation test/start-time; skip convergence metric")
+		log.Info("annotation test/start-time is empty; skip convergence metric")
 		return ctrl.Result{}, nil
 	}
 
