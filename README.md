@@ -113,6 +113,9 @@ fi
 
 ## TODO
 - clean  및 GC 부분 담아야함.  
+- 프로메테우스 관련 정리 필요
+- PromQL 스터디
+- github action 으로 e2e 테스트 자동화
 
 ## 참고
 https://sugar-albatross-26b.notion.site/SloJob-E2E-Convergence-SLI-Phase-2-2dc86e6dd1d1802b9157f286913afeeb
