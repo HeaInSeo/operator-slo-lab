@@ -2,7 +2,13 @@
 ###
 - High-Performance/Complex Lifecycle Operator를 위한 SLI/SLO 프레임워크
 
-### 시작하기
+## 목적
+- Operator 개발 과정에서 발생하는 **Churn(Object/Event Churn)** 을
+  **정량적인 SLI로 정의하고 계측**
+- 배포 이후가 아니라 **개발 중(Shift-Left)** 에 SLI를 지속적으로 확인
+- 설계·구현 단계에서 **Churn 관련 성능/안정성 회귀를 예방**
+
+## 시작하기
 
 ```bash
 
@@ -38,7 +44,7 @@ curl -sf "$METRICS" >/dev/null \
   || echo "[FAIL] cannot reach metrics endpoint: $METRICS"
 
 ```
-### fork 할 때 주의사항
+## fork 할 때 주의사항
 - kubectl 관련해서 wrapping 한 스크립트를 쓰기 때문에 kubectl 설치해서 사용하는 개념이 아니다.
 - 아래와 같이 작성해서 사용하고 있고, /usr/local/bin 에 넣어두어서 전역적으로 사용할 수 있게 만들었다.
 
@@ -112,10 +118,13 @@ fi
 ```
 
 ## TODO
-- clean  및 GC 부분 담아야함.  
 - 프로메테우스 관련 정리 필요
 - PromQL 스터디
 - github action 으로 e2e 테스트 자동화
 
 ## 참고
+- SLI 및 코드 리뷰 1  
 https://sugar-albatross-26b.notion.site/SloJob-E2E-Convergence-SLI-Phase-2-2dc86e6dd1d1802b9157f286913afeeb
+
+- Makefile  
+https://sugar-albatross-26b.notion.site/operator-slo-lab-Makefile-2dd86e6dd1d180e786f0d654c804bd6b

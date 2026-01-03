@@ -26,3 +26,5 @@ echo "Using KUBEBUILDER_ASSETS=${KUBEBUILDER_ASSETS}"
 # 이중안전장치
 cd "${ROOT}"
 go test ./...
+
+# 삭제할 예정인 파일

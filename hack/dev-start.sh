@@ -57,7 +57,9 @@ log "3) 노드 상태 확인 (kubectl get nodes)"
 kubectl get nodes
 
 log "4) 테스트 실행 (./hack/test.sh)"
-"${ROOT}/hack/test.sh"
+# 단일 진입점으로 통합하기 위해 주석 처리
+#"${ROOT}/hack/test.sh"
+make -C "${ROOT}" test
 
 log "5) METRICS 기본값 안내"
 METRICS="http://localhost:8080/metrics"
